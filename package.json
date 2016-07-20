@@ -1,0 +1,35 @@
+{
+  "name": "oauth-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bluebird": "^3.4.1",
+    "debug": "^2.2.0",
+    "ejs": "^2.4.2",
+    "koa-jwt": "^2.0.1",
+    "koa-passport": "^2.1.1",
+    "koa-router": "^7.0.1",
+    "koa-views": "^5.0.2",
+    "mongoose": "^4.5.3",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.0",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "eslint": "^2.12.0",
+    "eslint-config-airbnb": "^9.0.1"
+  }
+}

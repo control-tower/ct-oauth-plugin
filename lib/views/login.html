@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <form action="/auth/login" method="POST">
+        <label>
+            Email
+            <input type="email" name="email" required>
+        </label>
+        <label>
+            Password
+            <input type="password" name="password" required>
+        </label>
+        <% if(error) {%>
+            <h5>Email or password invalid<h5>
+        <% } %>
+        <input type="submit" value="Login"/>
+    </form>
+    <a href="/auth/twitter">Twitter</a>
+  </div>
+</body>
+</html>
