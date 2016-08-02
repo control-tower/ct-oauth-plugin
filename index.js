@@ -11,7 +11,7 @@ function init() {
 }
 
 function middleware(app, plugin, generalConfig) {
-    mongoose.connect(`${generalConfig.mongoUri}/users`);
+    mongoose.createConnection(`${generalConfig.mongoUri}/users`);
     debug('Loading oauth-plugin');
 
     app.use(views(`${__dirname}/lib/views`, {
