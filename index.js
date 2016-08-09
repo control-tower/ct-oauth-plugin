@@ -1,5 +1,5 @@
 const apiRouter = require('./lib/auth.router');
-const authService = require('./lib/auth.service');
+const passportService = require('./lib/services/passport.service');
 const passport = require('koa-passport');
 const debug = require('debug')('oauth-plugin');
 const mongoose = require('mongoose');
@@ -11,15 +11,15 @@ function init() {
 }
 
 function middleware(app, plugin, generalConfig) {
-    mongoose.createConnection(`${generalConfig.mongoUri}/users`);
     debug('Loading oauth-plugin');
+    const connection = mongoose.createConnection(`${generalConfig.mongoUri}`);
 
     app.use(views(`${__dirname}/lib/views`, {
         map: {
             html: 'ejs',
         },
     }));
-    authService(plugin);
+    passportService(plugin, connection);
     app.use(passport.initialize());
     app.use(passport.session());
     if (plugin.config.jwt.active) {
@@ -28,7 +28,7 @@ function middleware(app, plugin, generalConfig) {
             passthrough: plugin.config.jwt.passthrough,
         }));
     }
-    app.use(apiRouter(plugin).middleware());
+    app.use(apiRouter(plugin, connection).middleware());
 
 }
 
