@@ -3,52 +3,72 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>API Gateway Service</title>
+    <title><%= generalConfig.application.name %> - Sign Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.min.css" media="all">
     <style>
-      body {
-        font-family: "Open Sans", Helvetica, Arial, sans-serif;
-        background: #f6f6f6;
-      }
-      #main {
-        height: 100vh
-      }
-      .login-form {
-        background: white;
-        padding: 50px 60px;
-        box-shadow: 2px 2px 20px rgba(0, 0, 0, .1);
-      }
+        body {
+          font-family: "Open Sans", Helvetica, Arial, sans-serif;
+          background: #f6f6f6;
+        }
+        #main {
+          height: 100vh
+        }
+        .button {
+            background-color: <%= generalConfig.application.principalColor %>;
+        }
+        a {
+            color: <%= generalConfig.application.principalColor %>;
+        }
+        .login-form {
+          background: white;
+          padding: 50px 60px;
+          box-shadow: 2px 2px 20px rgba(0, 0, 0, .1);
+        }
+        .recover{
+            display: block;
+        }
+        .align-center {
+            margin: 0 auto;
+        }
+        .row {
+            align-items: center
+        }
     </style>
   </head>
   <body>
     <div class="row align-middle align-center" id="main">
       <div class="small-12 columns">
         <div class="row align-center">
-          <div class="small-10 medium-8 large-4 columns">
-            <div class="login-form">
-              <h1>Create user</h1>
-              <% if (error) { %>
-                <div class="callout alert" data-closable>
-                  <p><%= error %></p>
-                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+          <div class="small-10 medium-8 large-8 columns">
+            <div class="login-form row">
+                <div class="small-8 medium-8 large-5 columns align-center">
+                  <img src="<%= generalConfig.application.logo %>">
                 </div>
-              <% } %>
-              <form action="/auth/sign-up" method="POST">
-                <label for="email">
-                  <input type="email" name="email" placeholder="Email" value="<%= email %>" required>
-                </label>
-                <label for="password">
-                  <input type="password" name="password" placeholder="Password" required>
-                </label>
-                <label for="password">
-                  <input type="password" name="repeatPassword" placeholder="Password" required>
-                </label>
-                <button class="button" type="submit">Guardar</button>
-              </form>
+                <div class="small-10 medium-8 large-6 columns align-center">
+                    <h1>Create user</h1>
+                    <% if (error) { %>
+                    <div class="callout alert" data-closable>
+                      <p><%= error %></p>
+                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <% } %>
+                    <form action="/auth/sign-up" method="POST">
+                    <label for="email">
+                      <input type="email" name="email" placeholder="Email" value="<%= email %>" required>
+                    </label>
+                    <label for="password">
+                      <input type="password" name="password" placeholder="Password" required>
+                    </label>
+                    <label for="password">
+                      <input type="password" name="repeatPassword" placeholder="Repeat Password" required>
+                    </label>
+                    <button class="button" type="submit">Guardar</button>
+                    </form>
+                </div>
             </div>
           </div>
           <!-- <a href="/auth/twitter">Twitter</a> -->

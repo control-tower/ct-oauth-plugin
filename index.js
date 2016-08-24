@@ -28,7 +28,7 @@ function middleware(app, plugin, generalConfig) {
             passthrough: plugin.config.jwt.passthrough,
         }));
     }
-    app.use(apiRouter(plugin, connection).middleware());
+    app.use(apiRouter(plugin, connection, generalConfig).middleware());
 
 }
 
