@@ -23,10 +23,15 @@ function middleware(app, plugin, generalConfig) {
     app.use(passport.initialize());
     app.use(passport.session());
     if (plugin.config.jwt.active) {
+        debug('JWT active');
         app.use(jwt({
             secret: plugin.config.jwt.secret,
             passthrough: plugin.config.jwt.passthrough,
         }));
+    }
+    if (plugin.config.basic.active) {
+        debug('Basic auth active');
+        app.use(passport.authenticate('basic', { session: false }));
     }
     app.use(apiRouter(plugin, connection, generalConfig).middleware());
 
