@@ -68,7 +68,7 @@
                     <button class="button" type="submit">Login</button>
                     <a class="recover" href="/auth/reset-password">Recover password</a>
                   </form>
-                  <% if (thirdParty.twitter || thirdParty.google || thirdParty.facebook) { %>
+                  <% if (thirdParty.twitter || thirdParty.google || thirdParty.facebook  || thirdParty.basic) { %>
                   <div class="third-party">
                       <h4>Other providers</h4>
                       <% if (thirdParty.twitter) { %>
@@ -79,6 +79,9 @@
                       <% } %>
                       <% if (thirdParty.google) { %>
                         <a href="/auth/google"><i class="fa fa-google-plus" aria-hidden="true"></i>Google</a>
+                      <% } %>
+                      <% if (thirdParty.basic) { %>
+                        <a href="/auth/basic"><i class="fa fa-google-plus" aria-hidden="true"></i>Basic</a>
                       <% } %>
                   </div>
                   <% } %>
