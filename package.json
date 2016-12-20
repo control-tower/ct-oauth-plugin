@@ -15,7 +15,7 @@
     "debug": "^2.2.0",
     "ejs": "^2.4.2",
     "jsonwebtoken": "^7.1.7",
-    "koa-jwt": "^2.0.1",
+    "koa-jwt": "git+http://github.com/rrequero/jwt.git#koa-v2",
     "koa-passport": "^2.1.1",
     "koa-router": "^7.0.1",
     "koa-views": "^5.0.2",
