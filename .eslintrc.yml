@@ -8,6 +8,7 @@ parserOptions:
   sourceType: module
   ecmaVersion: 6
 rules:
+  no-underscore-dangle: [0]
   max-len: [1, 120, 2, {"ignoreUrls":true}]
   curly: [2, "multi-line"]
   comma-dangle: [0, always-multiline]

@@ -1,4 +1,5 @@
 const apiRouter = require('./lib/auth.router');
+const applicationRouter = require('./lib/application.router');
 const passportService = require('./lib/services/passport.service');
 const passport = require('koa-passport');
 const debug = require('debug')('oauth-plugin');
@@ -7,15 +8,37 @@ const jwt = require('koa-jwt');
 const views = require('koa-views');
 
 const authServiceFunc = require('./lib/services/auth.service');
+const applicationServiceFunc = require('./lib/services/application.service');
+let connection = null;
+let AuthService = null;
+let ApplicationService = null;
 
 function init() {
 
 }
 
+async function migrate() {
+    debug('Executing migrate');
+    const exist = await AuthService.existEmail('admin@control-tower.com');
+    if (exist) {
+        throw new Error('User exist');
+    }
+    const user = await AuthService.createUserWithoutConfirmation({
+        email: 'admin@control-tower.com',
+        password: 'admin'
+    });
+    await ApplicationService.createApplication(user._id, {
+        name: 'Control Tower',
+        sourceDomains: ['*']
+    });
+    debug('Executed migrate successfully');
+}
+
 function middleware(app, plugin, generalConfig) {
     debug('Loading oauth-plugin');
-    const connection = mongoose.createConnection(`${generalConfig.mongoUri}`);
-    const AuthService = authServiceFunc(plugin, connection);
+    connection = mongoose.createConnection(`${generalConfig.mongoUri}`);
+    AuthService = authServiceFunc(plugin, connection);
+    ApplicationService = applicationServiceFunc(plugin, connection);
     app.use(views(`${__dirname}/lib/views`, {
         map: {
             html: 'ejs',
@@ -33,6 +56,7 @@ function middleware(app, plugin, generalConfig) {
         }));
     }
     app.use(apiRouter(plugin, connection, generalConfig).middleware());
+    app.use(applicationRouter(plugin, connection, generalConfig).middleware());
 
 }
 
@@ -40,4 +64,5 @@ function middleware(app, plugin, generalConfig) {
 module.exports = {
     middleware,
     init,
+    migrate,
 };
