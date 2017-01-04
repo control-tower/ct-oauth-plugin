@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const jwt = require('koa-jwt');
 const views = require('koa-views');
 
-const authServiceFunc = require('./lib/services/auth.service');
+// const authServiceFunc = require('./lib/services/auth.service');
 
 function init() {
 
@@ -15,7 +15,7 @@ function init() {
 function middleware(app, plugin, generalConfig) {
     debug('Loading oauth-plugin');
     const connection = mongoose.createConnection(`${generalConfig.mongoUri}`);
-    const AuthService = authServiceFunc(plugin, connection);
+    // const AuthService = authServiceFunc(plugin, connection);
     app.use(views(`${__dirname}/lib/views`, {
         map: {
             html: 'ejs',
@@ -29,7 +29,7 @@ function middleware(app, plugin, generalConfig) {
         app.use(jwt({
             secret: plugin.config.jwt.secret,
             passthrough: plugin.config.jwt.passthrough,
-            isRevoked: AuthService.checkRevokedToken
+            // isRevoked: AuthService.checkRevokedToken
         }));
     }
     app.use(apiRouter(plugin, connection, generalConfig).middleware());
