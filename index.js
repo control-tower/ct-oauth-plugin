@@ -21,7 +21,7 @@ async function migrate() {
     debug('Executing migrate');
     const exist = await AuthService.existEmail('admin@control-tower.com');
     if (exist) {
-        throw new Error('User exist');
+        debug('User exist');
     }
     const user = await AuthService.createUserWithoutConfirmation({
         email: 'admin@control-tower.com',
