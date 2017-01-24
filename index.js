@@ -29,7 +29,7 @@ async function migrate() {
     });
     await ApplicationService.createApplication(user._id, {
         name: 'Control Tower',
-        sourceDomains: ['*']
+        allowedDomains: ['*']
     });
     debug('Executed migrate successfully');
 }
