@@ -15,7 +15,7 @@ rules:
   eqeqeq: [2, "allow-null"]
   no-shadow: 1
   no-param-reassign: [2, { "props": false }]
-  indent: [2, 4]
+  indent: [2, 2]
   padded-blocks: [2, { "switches": "always", "classes": "always" }]
   quotes:
     - 2

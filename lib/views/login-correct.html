@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><%= generalConfig.application.name %> - Login</title>
+    <title><%= brand.name %> - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.min.css" media="all">
@@ -17,10 +17,10 @@
         height: 100vh
       }
       .button {
-          background-color: <%= generalConfig.application.principalColor %>;
+          background-color: <%= brand.color %>;
       }
       a {
-          color: <%= generalConfig.application.principalColor %>;
+          color: <%= brand.color %>;
       }
       .login-form {
         background: white;
@@ -36,6 +36,9 @@
       .row {
           align-items: center
       }
+      h1, h4 {
+        color: <%=brand.color %>;
+      }
     </style>
   </head>
   <body>
@@ -46,11 +49,11 @@
             <div class="login-form row">
 
               <div class="small-8 medium-8 large-5 columns align-center">
-                <img src="<%= generalConfig.application.logo %>">
+                <img src="<%= brand.image %>">
               </div>
               <div class="small-10 medium-8 large-6 columns align-center">
                   <h1>Login correct</h1>
-                  <h4>Welcome to Control Tower</h4>
+                  <h4>Welcome to <%= brand.name %></h4>
               </div>
 
             </div>

@@ -1,63 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><%= generalConfig.application.name %> - Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" media="all">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.min.css" media="all">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" media="all">
-    <style>
-      body {
-        font-family: "Open Sans", Helvetica, Arial, sans-serif;
-        background: #f6f6f6;
-      }
-      #main {
-        height: 100vh
-      }
-      .button {
-          background-color: <%= generalConfig.application.principalColor %>;
-      }
-      a {
-          color: <%= generalConfig.application.principalColor %>;
-      }
-      .login-form {
-        background: white;
-        padding: 50px 60px;
-        box-shadow: 2px 2px 20px rgba(0, 0, 0, .1);
-      }
-      .recover{
-          display: block;
-      }
-      .align-center {
-          margin: 0 auto;
-      }
-      .row {
-          align-items: center
-      }
-    </style>
-  </head>
-  <body>
-    <div class="row align-middle align-center" id="main">
-      <div class="small-12 columns">
-        <div class="row align-center">
-          <div class="small-10 medium-8 large-8 columns">
-            <div class="login-form row">
 
-              <div class="small-8 medium-8 large-5 columns align-center">
-                <img src="<%= generalConfig.application.logo %>">
-              </div>
-              <div class="small-10 medium-8 large-6 columns align-center">
-                  <h1>Login</h1>
-                  <% if (error) { %>
-                    <div class="callout alert" data-closable>
-                      <p>Email or password invalid</p>
-                      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>
+    <%= brand.name %> - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.min.css" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" media="all">
+  <style>
+    body {
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+      background: #f6f6f6;
+    }
+
+    #main {
+      height: 100vh
+    }
+
+    .button {
+      background-color: <%=brand.color %>;
+    }
+
+    a {
+      color: <%=brand.color %>;
+    }
+
+    .login-form {
+      background: white;
+      padding: 50px 60px;
+      box-shadow: 2px 2px 20px rgba(0, 0, 0, .1);
+    }
+
+    .recover {
+      display: block;
+    }
+
+    .align-center {
+      margin: 0 auto;
+    }
+
+    .row {
+      align-items: center
+    }
+
+    h1,
+    h4 {
+      color: <%=brand.color %>;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="row align-middle align-center" id="main">
+    <div class="small-12 columns">
+      <div class="row align-center">
+        <div class="small-10 medium-8 large-8 columns">
+          <div class="login-form row">
+
+            <div class="small-8 medium-8 large-5 columns align-center">
+              <img src="<%= brand.image %>">
+            </div>
+            <div class="small-10 medium-8 large-6 columns align-center">
+              <h1>Login</h1>
+              <% if (error) { %>
+                <div class="callout alert" data-closable>
+                  <p>Email or password invalid</p>
+                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                         <span aria-hidden="true">&times;</span>
                       </button>
-                    </div>
-                  <% } %>
+                </div>
+                <% } %>
                   <form action="/auth/login" method="POST">
                     <label for="email">
                       <input type="email" name="email" placeholder="Email" required>
@@ -69,31 +85,32 @@
                     <a class="recover" href="/auth/reset-password">Recover password</a>
                   </form>
                   <% if (thirdParty.twitter || thirdParty.google || thirdParty.facebook  || thirdParty.basic) { %>
-                  <div class="third-party">
+                    <div class="third-party">
                       <h4>Other providers</h4>
                       <% if (thirdParty.twitter) { %>
                         <a href="/auth/twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a>
-                      <% } %>
-                      <% if (thirdParty.facebook) { %>
-                        <a href="/auth/facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
-                      <% } %>
-                      <% if (thirdParty.google) { %>
-                        <a href="/auth/google"><i class="fa fa-google-plus" aria-hidden="true"></i>Google</a>
-                      <% } %>
-                      <% if (thirdParty.basic) { %>
-                        <a href="/auth/basic"><i class="fa fa-google-plus" aria-hidden="true"></i>Basic</a>
-                      <% } %>
-                  </div>
-                  <% } %>
-              </div>
-
+                        <% } %>
+                          <% if (thirdParty.facebook) { %>
+                            <a href="/auth/facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
+                            <% } %>
+                              <% if (thirdParty.google) { %>
+                                <a href="/auth/google"><i class="fa fa-google-plus" aria-hidden="true"></i>Google</a>
+                                <% } %>
+                                  <% if (thirdParty.basic) { %>
+                                    <a href="/auth/basic"><i class="fa fa-google-plus" aria-hidden="true"></i>Basic</a>
+                                    <% } %>
+                    </div>
+                    <% } %>
             </div>
+
           </div>
-          <!-- <a href="/auth/twitter">Twitter</a> -->
         </div>
+        <!-- <a href="/auth/twitter">Twitter</a> -->
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
-  </body>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
+</body>
+
 </html>
