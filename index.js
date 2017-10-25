@@ -5,6 +5,7 @@ const debug = require('debug')('oauth-plugin');
 const mongoose = require('mongoose');
 const jwt = require('koa-jwt');
 const views = require('koa-views');
+const JWT = Promise.promisifyAll(require('jsonwebtoken'));
 
 // const authServiceFunc = require('./lib/services/auth.service');
 
@@ -31,6 +32,24 @@ function middleware(app, plugin, generalConfig) {
             passthrough: plugin.config.jwt.passthrough,
             // isRevoked: AuthService.checkRevokedToken
         }));
+        app.use(async (ctx, next) => {
+            if (ctx.headers && ctx.headers.authentication) {
+                debug('Authenticated microservice with token: ', ctx.headers.authentication);
+                try {
+                    const service = await JWT.verify(ctx.headers.authentication, plugin.config.jwt.secret);
+                    if (service) {
+                        ctx.state.microservice = {
+                            id: service.id,
+                            name: service.name,
+                            url: service.url,
+                        };
+                    }
+                    await next();
+                } catch (err) {
+                    debug('Token invalid', err);
+                }
+            }
+        });
     }
     app.use(apiRouter(plugin, connection, generalConfig).middleware());
 
