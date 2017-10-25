@@ -5,6 +5,7 @@ const debug = require('debug')('oauth-plugin');
 const mongoose = require('mongoose');
 const jwt = require('koa-jwt');
 const views = require('koa-views');
+const Promise = require('bluebird');
 const JWT = Promise.promisifyAll(require('jsonwebtoken'));
 
 // const authServiceFunc = require('./lib/services/auth.service');
