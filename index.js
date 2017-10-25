@@ -45,11 +45,11 @@ function middleware(app, plugin, generalConfig) {
                             url: service.url,
                         };
                     }
-                    await next();
                 } catch (err) {
                     debug('Token invalid', err);
                 }
             }
+            await next();
         });
     }
     app.use(apiRouter(plugin, connection, generalConfig).middleware());
