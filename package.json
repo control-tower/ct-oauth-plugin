@@ -1,6 +1,6 @@
 {
   "name": "ct-oauth-plugin",
-  "version": "1.6.18-data4sdgs",
+  "version": "1.6.19-data4sdgs",
   "description": "",
   "main": "index.js",
   "scripts": {
