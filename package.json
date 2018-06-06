@@ -1,6 +1,6 @@
 {
   "name": "ct-oauth-plugin",
-  "version": "1.7.4",
+  "version": "1.8.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "koa-views": "^5.0.2",
     "mongoose": "^4.5.3",
     "passport-facebook": "^2.1.1",
+    "passport-facebook-token": "3.3.0",
     "passport-google-oauth": "^1.0.0",
     "passport-google-plus-token": "^2.1.0",
     "passport-http": "^0.3.0",
