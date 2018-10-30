@@ -18,11 +18,7 @@ function middleware(app, plugin, generalConfig) {
     debug('Loading oauth-plugin');
     const connection = mongoose.createConnection(`${generalConfig.mongoUri}`);
     const AuthService = authServiceFunc(plugin, connection);
-    app.use(views(`${__dirname}/lib/views`, {
-        map: {
-            html: 'ejs',
-        },
-    }));
+    app.use(views(`${__dirname}/lib/views`, { extension: 'ejs' }));
     passportService(plugin, connection);
     app.use(passport.initialize());
     app.use(passport.session());
