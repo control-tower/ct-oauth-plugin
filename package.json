@@ -1,6 +1,6 @@
 {
   "name": "ct-oauth-plugin",
-  "version": "1.8.7",
+  "version": "1.8.8",
   "description": "OAuth plugin for Control Tower",
   "main": "index.js",
   "scripts": {
