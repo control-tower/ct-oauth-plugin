@@ -1,3 +1,4 @@
+- Add support for JSON formatted responses on POST /auth/reset-password endpoint
 - Add support for JSON formatted responses on POST /auth/sign-up endpoint
 - Add `disableEmailSending` configuration setting to disable email sending
 - Fix issue where update to sparkpost integration lib prevented emails from being sent
