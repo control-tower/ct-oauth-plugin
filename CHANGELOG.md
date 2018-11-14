@@ -1,3 +1,4 @@
+# 1.8.9
 - Add support for JSON formatted responses on POST /auth/reset-password endpoint
 - Add support for JSON formatted responses on POST /auth/sign-up endpoint
 - Add `disableEmailSending` configuration setting to disable email sending
