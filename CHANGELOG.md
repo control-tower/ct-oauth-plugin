@@ -1,3 +1,6 @@
+# 1.8.11
+- Fix bug in rendering login template on auth failure
+
 # 1.8.10
 - Improve HTTP error codes on POST /auth/reset-password endpoint responses
 
