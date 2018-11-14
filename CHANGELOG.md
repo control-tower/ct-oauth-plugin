@@ -1,3 +1,6 @@
+# 1.8.10
+- Improve HTTP error codes on POST /auth/reset-password endpoint responses
+
 # 1.8.9
 - Add support for JSON formatted responses on POST /auth/reset-password endpoint
 - Add support for JSON formatted responses on POST /auth/sign-up endpoint
