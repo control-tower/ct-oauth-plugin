@@ -1,3 +1,6 @@
+# 1.8.12
+- Add support for JSON formatted responses on POST /auth/login and GET /auth/login endpoint
+
 # 1.8.11
 - Fix bug in rendering login template on auth failure
 
