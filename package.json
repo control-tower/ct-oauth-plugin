@@ -27,6 +27,7 @@
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
+    "query-string": "^6.2.0",
     "sparkpost": "^2.1.2"
   },
   "devDependencies": {
