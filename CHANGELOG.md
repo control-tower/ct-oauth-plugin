@@ -1,3 +1,6 @@
+# 1.8.13
+- Fix issues on token generation
+
 # 1.8.12
 - Add support for JSON formatted responses on POST /auth/login and GET /auth/login endpoint
 
