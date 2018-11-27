@@ -1,3 +1,4 @@
+# 1.8.14
 - Add support to per-app default redirect on email confirmation
 
 # 1.8.13
