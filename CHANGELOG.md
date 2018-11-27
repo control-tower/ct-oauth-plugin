@@ -1,3 +1,5 @@
+- Add support to per-app default redirect on email confirmation
+
 # 1.8.13
 - Fix issues on token generation
 
