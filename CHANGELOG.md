@@ -1,3 +1,6 @@
+# 1.8.15
+- Fix issue where token was requested but not provided on local login
+
 # 1.8.14
 - Add support to per-app default redirect on email confirmation
 
